@@ -6,15 +6,14 @@
   
     "permissions": ["tabs", "storage"],
     "description": "Find where your partner is",
-    "web_accessible_resources" : [ 
-    "images/*.jpg", "images/*.png", "images/*.gif" 
-     ],
+     "background" : {
+       "scripts" : ["background.js"]
+     },
      "content_scripts" : [
       {
-      "matches" : [
-      "<all_urls>"
-      ],
-      "js" : ["content.js"]
+      "matches" : ["<all_urls>"],
+      "js" : ["content.js"],
+      "run_at": "document_end"
       }
       ],
      "browser_action" : {

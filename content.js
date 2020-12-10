@@ -12,12 +12,8 @@ chrome.runtime.onMessage.addListener(
     }
   }
 );
-//attempting to find a way to make the page move on load to the height given
 
-
-// setTimeout(window.scrollTo(0, 500), 1000)
-//chrome.storage.local.get('Height')
-//.then(data => {
-//    height = data.Height;
-//    setTimeout(window.scrollTo(0, height), 1000)
-//})
+chrome.runtime.sendMessage({greeting: 'getSource'}, function(response) {
+  console.log('asdkjlasd')
+  window.scrollTo(0, response.scrollAmount)
+})

@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let link = document.getElementById('submitForm').value
     //split it into url and height e.g link = ['google.com', 600 ]
     link = link.split(' ')
-
     //currently just goes to link
-    chrome.tabs.create({url: link[0]})
-    
-    //need to find way to store that height given here and pass it to content.js
-    }
+    chrome.runtime.sendMessage({greeting: 'execute', source: link[0], scroll: link[1]})
+    // chrome.tabs.query({active: true, currentWindow: true} , function(tabs) {
+    // chrome.tabs.sendMessage(tabs[0].id, {greeting: 'execute', source: link[0], scroll: link[1]})
+    // })
+  }
