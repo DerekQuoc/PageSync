@@ -15,5 +15,8 @@ chrome.runtime.onMessage.addListener(
 
 chrome.runtime.sendMessage({greeting: 'getSource'}, function(response) {
   console.log('asdkjlasd')
-  window.scrollTo(0, response.scrollAmount)
+  if(response.scrollAmount !== null)
+  {
+    window.scrollTo(0, response.scrollAmount)
+  }
 })

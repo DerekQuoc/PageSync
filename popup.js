@@ -10,6 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
       document.getElementById('linkLocation').innerHTML = response.farewell;
+      //document.getElementById('linkLocation').textContent.select()
+      //document.execCommand("copy")
+
+      //copy
+      const el = document.createElement('textarea');
+      el.value = response.farewell;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+
     });
   })
   }
