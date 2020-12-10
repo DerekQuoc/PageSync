@@ -1,11 +1,11 @@
 { 
     "manifest_version" : 2, 
-    "name" : "Good Night! Dreamcatcher",
+    "name" : "Page Sync",
     "version" : "1.0", 
   
   
-    "permissions": ["tabs"],
-    "description": "내꿈꿔! 드림캐쳐입니다! 웹서치엔진에서 바로 만나보세요! Meet your favorite idol group on your web search engine, Good Night:)",
+    "permissions": ["tabs", "storage"],
+    "description": "Find where your partner is",
     "web_accessible_resources" : [ 
     "images/*.jpg", "images/*.png", "images/*.gif" 
      ],

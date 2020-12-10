@@ -1,38 +1,27 @@
-document.addEventListener('DOMContentLoaded', function () { 
-    var submitButton = document.getElementById("button_submit");
-    submitButton.addEventListener('click', sendData);
-  
-    chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-    if (message.txt == "UPDATE URL") {
-      selectAndReplace(message.generatedURL, sender, sendResponse);
-    }
+document.addEventListener('DOMContentLoaded', () => {
+  let button = document.getElementById('button_submit')
+  button.addEventListener('click', generate)
+  let goButton = document.getElementById('go_button')
+  goButton.addEventListener('click', travel)
+});
+
+  // send a message to content.js for the url and height
+  const generate = () => {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, {greeting: "hello"}, function(response) {
+      document.getElementById('linkLocation').innerHTML = response.farewell;
     });
+  })
+  }
+  
+  const travel = () => {
+    //get the link put into the text box
+    let link = document.getElementById('submitForm').value
+    //split it into url and height e.g link = ['google.com', 600 ]
+    link = link.split(' ')
+
+    //currently just goes to link
+    chrome.tabs.create({url: link[0]})
     
-    });
-  
-  
-    function selectAndReplace(url) {
-      let generatedLinkLocation = document.getElementById('generatedLink')
-      generatedLinkLocation.innerTEXT = url;
-    }
-  
-    function sendData() {
-      let params = {
-      active: true,
-      currentWindow: true
-     }
-    chrome.tabs.query(params, gotTabs);
-    function gotTabs(tabs) {
-  
-      let currentURL = tabs[0].url
-    // var selected = document.getElementById("select_image");
-    // var selectedImage = selected.options[selected.selectedIndex].value;
-    let message = {
-    txt: "Hello",
-    url: currentURL
-    }
-    chrome.tabs.sendMessage(tabs[0].id, message, function (response) {
-    console.log("Success");
-    });
-    }
+    //need to find way to store that height given here and pass it to content.js
     }
