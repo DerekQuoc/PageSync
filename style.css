@@ -1,0 +1,25 @@
+body {
+  width: 195px;
+  height: 195px;
+  background-image: url('images/icon128.png');
+  background-size: cover;
+  background-color: black;
+  background-position: center center;
+}
+
+#linkLocation {
+  color: white;
+}
+
+#inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#submitForm {
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+}
